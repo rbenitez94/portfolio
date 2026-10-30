@@ -75,11 +75,13 @@ svg { flex-shrink: 0; }
 .bar-actions { display: flex; align-items: center; gap: 10px; }
 .lang { display: inline-flex; background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
 .lang button {
-  border: 0; background: transparent; padding: 5px 13px; border-radius: 999px;
+  border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; display: inline-flex; align-items: center;
+  opacity: 0.55; transition: opacity 0.15s;
   font: 600 0.85rem var(--font-body); color: var(--muted); cursor: pointer;
 }
-.lang button.on { background: var(--ink); color: var(--white); }
-.lang button:not(.on):hover { color: var(--ink); }
+.lang button.on { background: var(--ink); opacity: 1; }
+.lang button:not(.on):hover { opacity: 0.9; }
+.lang svg { display: block; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15); }
 
 .menu-btn {
   display: none; border: 1px solid var(--line); background: var(--white); color: var(--ink);
@@ -89,6 +91,7 @@ svg { flex-shrink: 0; }
 /* ---------- hero ---------- */
 .hero { padding: clamp(56px, 9vw, 112px) 0 clamp(48px, 7vw, 88px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--white); box-shadow: 0 10px 30px -12px rgba(15, 42, 67, 0.5); margin-bottom: 20px; display: block; }
 .greeting { font-size: 1.15rem; color: var(--cobalt-dark); font-weight: 600; margin-bottom: 8px; }
 .hero h1 { font-size: clamp(2.9rem, 7.2vw, 5.4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1; }
 .role { margin-top: 14px; font-family: var(--font-head); font-size: clamp(1.35rem, 2.6vw, 1.9rem); color: var(--ink-2); font-weight: 500; }

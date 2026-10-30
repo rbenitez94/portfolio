@@ -44,6 +44,25 @@ function TechChip({ name }: { name: string }) {
   );
 }
 
+function FlagUS() {
+  return (
+    <svg viewBox="0 0 28 20" width="22" height="16" aria-hidden="true" focusable="false">
+      <rect width="28" height="20" fill="#fff" />
+      {[0, 2, 4, 6, 8, 10, 12].map((i) => <rect key={i} y={i * 20 / 13} width="28" height={20 / 13} fill="#b22234" />)}
+      <rect width="12" height={20 * 7 / 13} fill="#3c3b6e" />
+    </svg>
+  );
+}
+
+function FlagES() {
+  return (
+    <svg viewBox="0 0 28 20" width="22" height="16" aria-hidden="true" focusable="false">
+      <rect width="28" height="20" fill="#aa151b" />
+      <rect y="5" width="28" height="10" fill="#f1bf00" />
+    </svg>
+  );
+}
+
 function getInitialLang(): Lang {
   try {
     const stored = localStorage.getItem("lang");
@@ -104,8 +123,8 @@ export default function App() {
 
           <div className="bar-actions">
             <div className="lang" role="group" aria-label={t.langLabel}>
-              <button type="button" className={lang === "en" ? "on" : ""} aria-pressed={lang === "en"} onClick={() => setLang("en")} lang="en">EN</button>
-              <button type="button" className={lang === "es" ? "on" : ""} aria-pressed={lang === "es"} onClick={() => setLang("es")} lang="es">ES</button>
+              <button type="button" className={lang === "en" ? "on" : ""} aria-pressed={lang === "en"} onClick={() => setLang("en")} lang="en" aria-label="English" title="English"><FlagUS /></button>
+              <button type="button" className={lang === "es" ? "on" : ""} aria-pressed={lang === "es"} onClick={() => setLang("es")} lang="es" aria-label="Español" title="Español"><FlagES /></button>
             </div>
             <button type="button" className="menu-btn" aria-label="Menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <LuX aria-hidden="true" /> : <LuMenu aria-hidden="true" />}
@@ -119,6 +138,7 @@ export default function App() {
         <section className="hero" id="top">
           <div className="wrap hero-grid">
             <div className="hero-copy">
+              <img className="avatar" src={`${import.meta.env.BASE_URL}avatar.jpg`} alt={t.hero.name} width={120} height={120} />
               <p className="greeting">{t.hero.greeting}</p>
               <h1>{t.hero.name}</h1>
               <p className="role">{t.hero.role}</p>
